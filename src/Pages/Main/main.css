@@ -1,0 +1,28 @@
+.main_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px 0 0 0;
+}
+.none-eater_tr{
+    color: lightgray;
+    opacity: 0.7;
+}
+
+.table_container{
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    width: 300px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+}
+
+th, td {
+    padding: 20px;
+    border: 1px solid black;
+}

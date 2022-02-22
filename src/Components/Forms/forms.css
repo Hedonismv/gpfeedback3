@@ -1,0 +1,19 @@
+.btn_input{
+    padding: 10px 30px;
+    border:none;
+    cursor: pointer;
+}
+
+.btn_input:hover{
+    opacity: 0.8;
+}
+
+.delete{
+    background: red;
+    color: aliceblue;
+}
+
+.save{
+    background: lightseagreen;
+    color: aliceblue;
+}
