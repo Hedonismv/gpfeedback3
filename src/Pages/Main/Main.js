@@ -2,9 +2,16 @@ import React from 'react';
 import './main.css';
 import DietItem from "../../Components/dietItem/dietItem";
 
-const Main = ({diet, noneEaters}) => {
+const Main = ({diet, noneEaters, clear}) => {
+
+	const clearHandler = () => {
+		clear(false)
+		localStorage.clear()
+	}
+
 	return (
 		<div className={'main_container'}>
+			<input type={"submit"} value={'Clear LocalStorage'} onClick={() => clearHandler()}/>
 			<table>
 				<thead>
 					<tr>

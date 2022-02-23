@@ -1,4 +1,11 @@
-import {SET_ANSWER, SET_CURRENT_FEEDBACK, SET_DIET, SET_GUESTS, SET_NONE_EATERS} from "../action-creators/guests";
+import {
+	SET_ANSWER,
+	SET_CURRENT_FEEDBACK,
+	SET_DIET,
+	SET_GUESTS,
+	SET_LOCAL_DATA,
+	SET_NONE_EATERS
+} from "../action-creators/guests";
 
 const initialState = {
 	diets: [],
@@ -10,6 +17,13 @@ const initialState = {
 
 export const guestReducer = (state = initialState, action) => {
 	switch (action.type){
+		case SET_LOCAL_DATA:
+			return{
+				...state,
+				diets: action.payload.diets,
+				noneEaters: action.payload.noneEaters,
+				guests: action.payload.guests
+			}
 		case SET_GUESTS:
 			return {
 				...state,

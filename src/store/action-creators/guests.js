@@ -5,6 +5,7 @@ export const SET_NONE_EATERS = "SET_NONE_EATERS"
 export const SET_DIET = "SET_DIET"
 export const SET_CURRENT_FEEDBACK = "SET_CURRENT_FEEDBACK"
 export const SET_ANSWER = "SET_ANSWER"
+export const SET_LOCAL_DATA = "SET_LOCAL_DATA"
 
 
 export function fetchTestGuest(){
@@ -34,7 +35,19 @@ export function fetchDiet(dietLink){
 	}
 }
 
-export const setAnswer = (name) => ({type: SET_ANSWER, payload: name})
+export const setLocalData = (allData) => ({type: SET_LOCAL_DATA, payload: allData})
+
+export const setAnswer = (selectedUsrData) => {
+	const localDiet = JSON.parse(localStorage.getItem('localDiets'))
+	localStorage.removeItem('localDiets')
+	const filteredDiet = localDiet.filter(a => a.name !== selectedUsrData.name)
+	const newLocalDiet = [
+		...filteredDiet,
+		selectedUsrData
+	]
+	localStorage.setItem('localDiets', JSON.stringify(newLocalDiet))
+	return 	{type: SET_ANSWER, payload: selectedUsrData}
+}
 export const setCurrentFeedback = (eater) => ({type: SET_CURRENT_FEEDBACK, payload: eater})
 
 
