@@ -36,7 +36,21 @@ export function fetchDiet(dietLink){
 
 export const setAnswer = (name) => ({type: SET_ANSWER, payload: name})
 export const setCurrentFeedback = (eater) => ({type: SET_CURRENT_FEEDBACK, payload: eater})
-export const setNoneEaters = (noneEaters) => ({type: SET_NONE_EATERS, payload: noneEaters})
-export const setDiet = (diet) => ({type: SET_DIET, payload: diet})
-export const setGuests = (guests) => ({type: SET_GUESTS, payload: guests})
+
+
+export const setNoneEaters = (noneEaters) => {
+	localStorage.setItem('localNoneEaters', JSON.stringify(noneEaters))
+	return {type: SET_NONE_EATERS, payload: noneEaters}
+}
+
+
+export const setDiet = (diet) => {
+	localStorage.setItem('localDiets', JSON.stringify(diet))
+	return {type: SET_DIET, payload: diet}
+}
+
+export const setGuests = (guests) => {
+	localStorage.setItem('localGuests', JSON.stringify(guests))
+	return {type: SET_GUESTS, payload: guests}
+}
 

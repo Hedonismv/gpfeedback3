@@ -1,5 +1,5 @@
 import './App.css';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {Routes, Route} from "react-router";
 import Main from "./Pages/Main/Main";
 import FeedBack from "./Pages/FeedBack/FeedBack";
@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 function App() {
   const dispatch = useDispatch()
+  const [isLocalEmpty, setIsLocalEmpty] = useState(false)
   const {guests, noneEaters, diets} = useSelector(state => state.guest)
 
 
@@ -24,14 +25,30 @@ function App() {
     }
   }
 
+  const checkLocalStorage = () => {
+    if(localStorage.getItem('localGuests')){
+      setIsLocalEmpty(false)
+      const localGuests = JSON.parse(localStorage.getItem('localGuests'))
+      const localNoneEaters = JSON.parse(localStorage.getItem('localNoneEaters'))
+      const localDiets = JSON.parse(localStorage.getItem('localDiets'))
+      // Dispatch from local function which set all data
+      console.log(localNoneEaters, localGuests, localDiets)
+    }else{
+      setIsLocalEmpty(true)
+      dispatch(fetchTestGuest())
+    }
+  }
+
 
   useEffect(() => {
-    generateLinkAndFetchDietBook()
+    if(isLocalEmpty){
+      generateLinkAndFetchDietBook()
+    }
   }, [guests])
 
 
   useEffect(() => {
-    dispatch(fetchTestGuest())
+    checkLocalStorage()
   },[dispatch])
 
   return (

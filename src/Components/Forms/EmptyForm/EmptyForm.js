@@ -19,24 +19,24 @@ const EmptyForm = ({guest}) => {
 	const validateForm = () => {
 		// const reg = new RegExp('^[0-9]{3,10}$')
 		// console.log(reg.test(phone))
-		if(comment.length && !error){
+		if(phone.length < 3 || phone.length > 10 || comment.length < 1){
+			setError(true)
+			setIsFilled(false)
+		}else{
+			setError(false)
 			setIsFilled(true)
 		}
 	}
 
 	const validatePhone = (e) =>{
 		setPhone(e.target.value)
-		console.log(phone.length)
-		if(phone.length < 3 || phone.length > 10){
-			setError(true)
-		}else {
-			setError(false)
-			validateForm()
-		}
+		console.log(e.target.value)
+		validateForm()
 	}
 
 	const validateComment = (e) =>{
 		setComment(e.target.value)
+		console.log(e.target.value)
 		validateForm()
 	}
 
@@ -72,7 +72,7 @@ const EmptyForm = ({guest}) => {
 			<div>
 				<span>Phone:</span>
 				<input type={"text"} value={phone} onChange={e => validatePhone(e)}/>
-				{error ? <span>Enter correct number</span>: null}
+				{error ? <span>Fill the Form</span>: null}
 			</div>
 			<div>
 				<span>Comment:</span>
