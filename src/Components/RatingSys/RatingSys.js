@@ -4,7 +4,7 @@ import './ratingSys.css';
 const RatingSys = ({rating, setRating=null, isFilled=false}) => {
 	
 	return (
-		<div>
+		<div className={'rating_block'}>
 			{[...Array(5)].map((star, index) => {
 				index += 1;
 				return (

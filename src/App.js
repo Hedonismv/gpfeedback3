@@ -10,6 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 function App() {
   const dispatch = useDispatch()
   const [isLocalEmpty, setIsLocalEmpty] = useState()
+  const [isLoaded, setIsLoaded] = useState(false)
   const {guests, noneEaters, diets} = useSelector(state => state.guest)
 
 
@@ -22,12 +23,12 @@ function App() {
       });
       const dietLink = generateLink(names)
       dispatch(fetchDiet(dietLink))
+      setIsLoaded(true)
     }
   }
 
   const checkLocalStorage = () => {
     if(localStorage.getItem('localGuests')){
-      // setIsLocalEmpty(false)
       const localGuests = JSON.parse(localStorage.getItem('localGuests'))
       const localNoneEaters = JSON.parse(localStorage.getItem('localNoneEaters'))
       const localDiets = JSON.parse(localStorage.getItem('localDiets'))
@@ -37,10 +38,10 @@ function App() {
         noneEaters: localNoneEaters
       }
       dispatch(setLocalData(allData))
-      // Dispatch from local function which set all data
-      console.log(localNoneEaters, localGuests, localDiets)
+      setIsLoaded(true)
     }else{
       setIsLocalEmpty(true)
+      setIsLoaded(false)
       dispatch(fetchTestGuest())
     }
   }
@@ -60,7 +61,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path={'/'} element={<Main clear={setIsLocalEmpty} diet={diets} noneEaters={noneEaters}/>}/>
+        <Route path={'/'} element={<Main clear={setIsLocalEmpty} isLoaded={isLoaded} diet={diets} noneEaters={noneEaters}/>}/>
         <Route path={'/:id'} element={<FeedBack/>}/>
         <Route
             path="*"

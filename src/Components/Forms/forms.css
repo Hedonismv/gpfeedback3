@@ -2,16 +2,64 @@
     padding: 10px 30px;
     border:none;
     cursor: pointer;
+    margin: 10px 10px;
 }
 
 .btn_input:hover{
     opacity: 0.8;
+}
+.label{
+    font-weight: bold;
+}
+
+.form_block{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.filled_textarea{
+    outline: none;
+    -moz-appearance: none;
+    border: none;
+    min-height: 50px;
+}
+.empty_form{
+    min-width: 280px;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .delete{
     background: red;
     color: aliceblue;
 }
+
+.cancel{
+    background: antiquewhite;
+    color: black;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form_input{
+    height: 25px;
+    border: 1px solid black;
+    outline: none;
+}
+
+textarea{
+    resize: none;
+    overflow: auto;
+}
+
+
 
 .save{
     background: lightseagreen;

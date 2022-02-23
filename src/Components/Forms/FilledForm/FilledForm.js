@@ -18,29 +18,29 @@ const FilledForm = () => {
 			isVegan: selectedGuest.isVegan,
 			isAnswer: false,
 		}
-		console.log(feedBackData)
 		dispatch(setAnswer(feedBackData))
 		dispatch(setCurrentFeedback(feedBackData))
 	}
 
 	return (
 		<div>
-			<div>
-				<span>Name:</span>
+			<div className={'form_block'}>
+				<span className={'label'}>Name:</span>
 				<p>{selectedGuest.name}</p>
 			</div>
 			<RatingSys rating={selectedGuest.rating} isFilled={true}/>
-			<div>
-				<span>Phone:</span>
+			<div className={'form_block'}>
+				<span className={'label'}>Phone:</span>
 				<p>{selectedGuest.phone}</p>
 			</div>
-			<div>
-				<span>Comment:</span>
-				<p>{selectedGuest.comment}</p>
+			<div className={'form_block'}>
+				<span className={'label'}>Comment:</span>
+				<textarea className={'filled_textarea'} value={selectedGuest.comment} readOnly={true}/>
 			</div>
-			<input className={'btn_input delete'} type={"submit"} value={'DELETE'} onClick={() => handleDelete()}/>
-			<input className={'btn_input save'} type={"submit"} value={'BACK'} onClick={() => navigate('/')}/>
-
+			<div className={'form_block_btns'}>
+				<input className={'btn_input delete'} type={"submit"} value={'DELETE'} onClick={() => handleDelete()}/>
+				<input className={'btn_input cancel'} type={"submit"} value={'BACK'} onClick={() => navigate('/')}/>
+			</div>
 		</div>
 	);
 };

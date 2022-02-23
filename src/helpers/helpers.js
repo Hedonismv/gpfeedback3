@@ -1,11 +1,4 @@
 
-//  func filter eaters
-export const filterEaters = (guests) => {
-	if (guests) {
-		return guests.filter((guest) => guest.eatsPizza === true);
-	}
-};
-
 export const filterNonEeaters = (guests) => {
 	if (guests){
 		return guests.filter((guest) => guest.eatsPizza === false)

@@ -5,6 +5,19 @@
     flex-direction: column;
     margin: 100px 0 0 0;
 }
+.clear_btn{
+    padding: 15px 20px;
+    background: aquamarine;
+    margin: 20px 0;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.clear_btn:hover{
+    opacity: 0.8;
+}
 .none-eater_tr{
     color: lightgray;
     opacity: 0.7;

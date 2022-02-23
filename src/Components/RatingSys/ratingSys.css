@@ -6,7 +6,11 @@ button {
     outline: none;
     cursor: pointer;
 }
-
+.rating_block{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+}
 
 .on {
     color: #000;

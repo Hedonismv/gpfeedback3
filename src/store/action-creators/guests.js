@@ -13,7 +13,6 @@ export function fetchTestGuest(){
 		try{
 			const response = await axios.get("https://gp-js-test.herokuapp.com/pizza/guests")
 			dispatch(setGuests(response.data.party))
-			console.log(response.data.party)
 		}catch (e) {
 			console.log(e)
 		}
@@ -27,7 +26,6 @@ export function fetchDiet(dietLink){
 			const newObj = response.data.diet.map(obj => {
 				return {...obj, isAnswer: false}
 			})
-			console.log(newObj)
 			dispatch(setDiet(newObj))
 		}catch (e) {
 			console.log(e)
